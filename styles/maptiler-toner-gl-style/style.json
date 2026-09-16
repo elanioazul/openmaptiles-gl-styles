@@ -18,7 +18,7 @@
       "url": "https://api.maptiler.com/tiles/v3-openmaptiles/tiles.json?key={key}"
     }
   },
-  "glyphs": "http://localhost:3000/font/{fontstack}/{range}.pbf",
+  "glyphs": "http://localhost:3001/font/{fontstack}/{range}.pbf",
   "layers": [
     {
       "id": "background",
@@ -1598,6 +1598,6 @@
       "type": "symbol"
     }
   ],
-  "sprite": "http://localhost:3000/style/maptiler-toner-gl-style",
+  "sprite": "http://localhost:3001/style/maptiler-toner-gl-style",
   "id": "c4268e48-fac9-4478-8120-201224fbd4d8"
 }
