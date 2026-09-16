@@ -1,3 +1,3 @@
 # What is
 
-and self contained openmaptiles styles app for style management
+A self contained styles management app for openmaptiles GL styling
