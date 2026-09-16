@@ -1,0 +1,33 @@
+#postgres: {}
+pmtiles: 
+  - /pmtiles/sp/sp-osm.pmtiles
+# mbtiles: {}
+# cog: {}
+# geojson: {}
+fonts:
+  paths:
+    - /assets/fonts
+  # aliases:
+  #   Noto Sans Bold Italic: [Noto Sans Bold Italic, Noto Sans Arabic Bold]
+  #   Noto Sans Bold Italic: [Noto Sans Bold Italic, Noto Sans Arabic Bold]
+styles:
+  sources:
+    dark-matter-gl-style: /styles/dark-matter-gl-style/style.json
+    fiord-color-gl-style: /styles/fiord-color-gl-style/style.json
+    maptiler-3d-gl-style: /styles/maptiler-3d-gl-style/style.json
+    maptiler-basic-gl-style: /styles/maptiler-basic-gl-style/style.json
+    maptiler-toner-gl-style: /styles/maptiler-toner-gl-style/style.json
+    osm-bright-gl-style: /styles/osm-bright-gl-style/style.json
+    positron-gl-style: /styles/positron-gl-style/style.json
+sprites:
+  sources:
+    common: /assets/svg_icons/openmaptiles
+    dark-matter-gl-style: /assets/svg_icons/dark-matter-gl-style
+    fiord-color-gl-style: /assets/svg_icons/fiord-color-gl-style
+    maptiler-3d-gl-style: /assets/svg_icons/maptiler-3d-gl-style
+    maptiler-basic-gl-style: /assets/svg_icons/maptiler-basic-gl-style
+    maptiler-toner-gl-style: /assets/svg_icons/maptiler-toner-gl-style
+    osm-bright-gl-style: /assets/svg_icons/osm-bright-gl-style
+    positron-gl-style: /assets/svg_icons/positron-gl-style
+    app6-pocwargame: /assets/svg_icons/app6-pocwargame
+

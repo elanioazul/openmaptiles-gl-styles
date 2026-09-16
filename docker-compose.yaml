@@ -1,0 +1,48 @@
+services:
+  maputnik:
+    image: ghcr.io/maplibre/maputnik:main
+    container_name: maputnik_gl_styles
+    ports:
+      - "8888:8000"
+    # The -it --rm functionality:
+    # 'restart: unless-stopped' is a common replacement for --rm in compose,
+    # but for an editor you might prefer it *not* to restart, so we'll omit it
+    # and focus on the volume and port mapping.
+    
+    # Mount a volume for configuration files and user data persistence.
+    # Maputnik typically stores user styles and settings in its working directory.
+    # This example maps a local directory './maputnik_data' to the container's
+    # working directory (which is usually where it stores its data).
+    # You may need to verify the exact path within the Maputnik container 
+    # if you experience issues, but for typical use, the default is often sufficient.
+    # The Maputnik documentation often suggests mounting to `/usr/src/app` 
+    # or the working directory if you want to expose a specific style file, 
+    # but for general configuration persistence, a volume is often best.
+    volumes:
+      - maputnik_data:/usr/src/app/data
+    
+    # Optional: Run in detached mode by default when using 'docker compose up'
+    # command: ["/bin/sh", "-c", "node bin/maputnik.js"]
+    networks:
+      - helios-openmaptiles-styling-network
+  martin:
+      image: ghcr.io/maplibre/martin:latest
+      container_name: martin_gl_styles
+      ports:
+        - "3000:3000"
+      volumes:
+        - ./martin-config.yaml:/etc/martin/martin-config.yaml
+        - ./assets:/assets
+        - ./styles:/styles
+        - /c/gis_pruebas/planetiler/sp:/pmtiles/sp:ro
+      command: ["--config", "/etc/martin/martin-config.yaml", "--webui", "enable-for-all"]
+      restart: unless-stopped
+      networks:
+        - helios-openmaptiles-styling-network
+volumes:
+  maputnik_data:
+    driver: local
+networks:
+  helios-openmaptiles-styling-network:
+    name: helios-openmaptiles-styling-net
+    driver: bridge
