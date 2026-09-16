@@ -1481,7 +1481,7 @@
       "layout": {
         "text-field": "{name:latin} {name:nonlatin}",
         "text-font": [
-          "Nunito Semi Bold"
+          "Nunito SemiBold"
         ],
         "text-max-width": 10,
         "text-size": 13,
@@ -1568,7 +1568,7 @@
       "layout": {
         "text-field": "{name:latin}",
         "text-font": [
-          "Nunito Extra Bold"
+          "Nunito ExtraBold"
         ],
         "text-line-height": 1.1,
         "text-max-width": 10,
