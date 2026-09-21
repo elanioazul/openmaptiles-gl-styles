@@ -7,9 +7,6 @@ pmtiles:
 fonts:
   paths:
     - /assets/fonts
-  # aliases:
-  #   Noto Sans Bold Italic: [Noto Sans Bold Italic, Noto Sans Arabic Bold]
-  #   Noto Sans Bold Italic: [Noto Sans Bold Italic, Noto Sans Arabic Bold]
 styles:
   sources:
     dark-matter-gl-style: /styles/dark-matter-gl-style/style.json

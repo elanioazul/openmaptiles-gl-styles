@@ -25,8 +25,8 @@
       "url": "https://api.maptiler.com/tiles/v3-openmaptiles/tiles.json?key={key}"
     }
   },
-  "sprite": "https://openmaptiles.github.io/dark-matter-gl-style/sprite",
-  "glyphs": "https://api.maptiler.com/fonts/{fontstack}/{range}.pbf?key={key}",
+  "sprite": "http://localhost:3001/style/dark-matter-gl-style",
+  "glyphs": "http://localhost:3001/font/{fontstack}/{range}.pbf",
   "layers": [
     {
       "id": "background",

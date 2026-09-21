@@ -29,7 +29,7 @@ services:
       image: ghcr.io/maplibre/martin:latest
       container_name: martin_gl_styles
       ports:
-        - "3000:3000"
+        - "3001:3000"
       volumes:
         - ./martin-config.yaml:/etc/martin/martin-config.yaml
         - ./assets:/assets
