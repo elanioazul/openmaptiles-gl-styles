@@ -24,7 +24,7 @@ services:
     # Optional: Run in detached mode by default when using 'docker compose up'
     # command: ["/bin/sh", "-c", "node bin/maputnik.js"]
     networks:
-      - helios-openmaptiles-styling-network
+      - helios-gl-styling-network
   martin:
       image: ghcr.io/maplibre/martin:latest
       container_name: martin_gl_styles
@@ -34,15 +34,27 @@ services:
         - ./martin-config.yaml:/etc/martin/martin-config.yaml
         - ./assets:/assets
         - ./styles:/styles
-        - /c/gis_pruebas/planetiler/sp:/pmtiles/sp:ro
+        - /c/gis_pruebas/planetiler/sp:/pmtiles/sp-planetiler:ro
+        - /c/gis_pruebas/protomaps/sp:/pmtiles/sp-protomaps:ro
       command: ["--config", "/etc/martin/martin-config.yaml", "--webui", "enable-for-all"]
       restart: unless-stopped
       networks:
-        - helios-openmaptiles-styling-network
+        - helios-gl-styling-network
+  precompiled_sprites:
+    image: nginx:1.25-alpine
+    container_name: precompiled_sprites_gl_styles
+    ports:
+      - "3002:80"
+    volumes:
+      - ./nginx-assets.conf:/etc/nginx/nginx.conf:ro
+      - ./assets/pre-compiled-sprites/protomaps-v4:/data/sprites:ro
+    restart: unless-stopped
+    networks:
+      - helios-gl-styling-network
 volumes:
   maputnik_data:
     driver: local
 networks:
-  helios-openmaptiles-styling-network:
-    name: helios-openmaptiles-styling-net
+  helios-gl-styling-network:
+    name: helios-gl-styling-net
     driver: bridge

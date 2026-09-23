@@ -1,6 +1,7 @@
 #postgres: {}
 pmtiles: 
-  - /pmtiles/sp/sp-osm.pmtiles
+  - /pmtiles/sp-planetiler/sp-osm.pmtiles
+  - /pmtiles/sp-protomaps/sp_protomaps.pmtiles 
 # mbtiles: {}
 # cog: {}
 # geojson: {}
@@ -9,22 +10,23 @@ fonts:
     - /assets/fonts
 styles:
   sources:
-    dark-matter-gl-style: /styles/dark-matter-gl-style/style.json
-    fiord-color-gl-style: /styles/fiord-color-gl-style/style.json
-    maptiler-3d-gl-style: /styles/maptiler-3d-gl-style/style.json
-    maptiler-basic-gl-style: /styles/maptiler-basic-gl-style/style.json
-    maptiler-toner-gl-style: /styles/maptiler-toner-gl-style/style.json
-    osm-bright-gl-style: /styles/osm-bright-gl-style/style.json
-    positron-gl-style: /styles/positron-gl-style/style.json
+    openmaptiles-dark-matter-gl-style: /styles/openmaptiles/dark-matter-gl-style/style.json
+    openmaptiles-fiord-color-gl-style: /styles/openmaptiles/fiord-color-gl-style/style.json
+    openmaptiles-maptiler-3d-gl-style: /styles/openmaptiles/maptiler-3d-gl-style/style.json
+    openmaptiles-maptiler-basic-gl-style: /styles/openmaptiles/maptiler-basic-gl-style/style.json
+    openmaptiles-maptiler-toner-gl-style: /styles/openmaptiles/maptiler-toner-gl-style/style.json
+    openmaptiles-osm-bright-gl-style: /styles/openmaptiles/osm-bright-gl-style/style.json
+    openmaptiles-positron-gl-style: /styles/openmaptiles/positron-gl-style/style.json
+    protomaps-dark-new: /styles/protomaps/world-darknew.json
 sprites:
   sources:
-    common: /assets/svg_icons/openmaptiles
-    dark-matter-gl-style: /assets/svg_icons/dark-matter-gl-style
-    fiord-color-gl-style: /assets/svg_icons/fiord-color-gl-style
-    maptiler-3d-gl-style: /assets/svg_icons/maptiler-3d-gl-style
-    maptiler-basic-gl-style: /assets/svg_icons/maptiler-basic-gl-style
-    maptiler-toner-gl-style: /assets/svg_icons/maptiler-toner-gl-style
-    osm-bright-gl-style: /assets/svg_icons/osm-bright-gl-style
-    positron-gl-style: /assets/svg_icons/positron-gl-style
+    openmaptiles-common: /assets/svg_icons/openmaptiles/common
+    openmaptiles-dark-matter-gl-style: /assets/svg_icons/openmaptiles/dark-matter-gl-style
+    openmaptiles-fiord-color-gl-style: /assets/svg_icons/openmaptiles/fiord-color-gl-style
+    openmaptiles-maptiler-3d-gl-style: /assets/svg_icons/openmaptiles/maptiler-3d-gl-style
+    openmaptiles-maptiler-basic-gl-style: /assets/svg_icons/openmaptiles/maptiler-basic-gl-style
+    openmaptiles-maptiler-toner-gl-style: /assets/svg_icons/openmaptiles/maptiler-toner-gl-style
+    openmaptiles-osm-bright-gl-style: /assets/svg_icons/openmaptiles/osm-bright-gl-style
+    openmaptiles-positron-gl-style: /assets/svg_icons/openmaptiles/positron-gl-style
     app6-pocwargame: /assets/svg_icons/app6-pocwargame
 
