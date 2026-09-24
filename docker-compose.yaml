@@ -29,7 +29,7 @@ services:
       image: ghcr.io/maplibre/martin:latest
       container_name: martin_gl_styles
       ports:
-        - "3001:3000"
+        - "3001:${MARTIN_PORT}"
       volumes:
         - ./martin-config.yaml:/etc/martin/martin-config.yaml
         - ./assets:/assets
@@ -51,6 +51,32 @@ services:
     restart: unless-stopped
     networks:
       - helios-gl-styling-network
+  nest:
+    container_name: nest_gl_styles
+    build:
+      context: ./spatial-operations
+      dockerfile: Dockerfile
+      target: development # Switches to the dev stage of the Dockerfile
+    user: root
+    restart: unless-stopped
+    environment:
+      NODE_ENV: development
+    ports:
+      - 5006:${NEST_PORT}
+      - 9229:9229
+    volumes:
+      - ./spatial-operations:/usr/src/app # Sync source code
+      - /usr/src/app/node_modules      # ANONYMOUS VOLUME
+      #- spatial_data:/tmp/spatial
+      - /var/run/docker.sock:/var/run/docker.sock
+    # Command for hot-reloading
+    command: npm run start:dev
+    env_file: .env
+    networks:
+      - helios-gl-styling-network
+    # depends_on:
+    #   postgis:
+    #     condition: service_healthy
 volumes:
   maputnik_data:
     driver: local
