@@ -43,7 +43,7 @@ async function bootstrap() {
   //docker exec helios_gl_styles-nests netstat -an | grep LISTEN
   console.log(`
     Server is listening on: http://0.0.0.0:${process.env.NEST_PORT}. 
-    Check in compose file for mapped port in host machine`
+    Check in docker compose file for mapped port in host machine`
   );
 }
 await bootstrap();
