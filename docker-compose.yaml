@@ -32,10 +32,11 @@ services:
         - "3001:${MARTIN_PORT}"
       volumes:
         - ./martin-config.yaml:/etc/martin/martin-config.yaml
-        - ./assets:/assets
-        - ./styles:/styles
-        - /c/gis_pruebas/planetiler/sp:/pmtiles/sp-planetiler:ro
-        - /c/gis_pruebas/protomaps/sp:/pmtiles/sp-protomaps:ro
+        - ./assets:/mounted_data/assets
+        - ./styles:/mounted_data/styles
+        - /c/gis_pruebas/planetiler/sp:/mounted_data/pmtiles/sp-planetiler:ro
+        - /c/gis_pruebas/protomaps/sp:/mounted_data/pmtiles/sp-protomaps:ro
+        - ./clipped-pmtiles:/mounted_data/pmtiles/dynamic
       command: ["--config", "/etc/martin/martin-config.yaml", "--webui", "enable-for-all"]
       restart: unless-stopped
       networks:
@@ -67,8 +68,11 @@ services:
     volumes:
       - ./spatial-operations:/usr/src/app # Sync source code
       - /usr/src/app/node_modules      # ANONYMOUS VOLUME
-      #- spatial_data:/tmp/spatial
+      #- spatial-operations:/tmp/spatial
       - /var/run/docker.sock:/var/run/docker.sock
+      - /c/gis_pruebas/planetiler/sp:/mounted_data/pmtiles/sp-planetiler:ro
+      - /c/gis_pruebas/protomaps/sp:/mounted_data/pmtiles/sp-protomaps:ro
+      - ./clipped-pmtiles:/mounted_data/pmtiles/dynamic
     # Command for hot-reloading
     command: npm run start:dev
     env_file: .env
