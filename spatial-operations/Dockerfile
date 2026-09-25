@@ -1,6 +1,13 @@
 # STAGE 1: Base
 FROM node:20-alpine AS base
-RUN apk add --no-cache docker-cli bash
+RUN apk add --no-cache docker-cli bash wget ca-certificates
+
+# Install go-pmtiles CLI binary
+RUN wget https://github.com/protomaps/go-pmtiles/releases/download/v1.31.2/go-pmtiles_1.31.2_Linux_x86_64.tar.gz \
+    && tar -xzf go-pmtiles_1.31.2_Linux_x86_64.tar.gz -C /usr/local/bin pmtiles \
+    && chmod +x /usr/local/bin/pmtiles \
+    && rm go-pmtiles_1.31.2_Linux_x86_64.tar.gz
+
 WORKDIR /usr/src/app
 
 # STAGE 2: Development
