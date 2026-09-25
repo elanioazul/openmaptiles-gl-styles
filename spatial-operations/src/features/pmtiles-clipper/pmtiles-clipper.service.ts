@@ -1,4 +1,5 @@
 import {
+  ConflictException,
   Injectable,
   InternalServerErrorException,
   NotFoundException,
@@ -44,6 +45,14 @@ export class PmtilesClipperService implements OnModuleInit {
     const tempLow = path.join(tempDir, `${sanitizedName}_low_${timestamp}.pmtiles`);
     const tempHigh = path.join(tempDir, `${sanitizedName}_high_${timestamp}.pmtiles`);
     const finalOutputFile = path.join(outputDir, `${sanitizedName}.pmtiles`);
+
+    //check no file in disck with same name
+    const filesInDisk = await this.findAllClips();
+    if (filesInDisk.files.findIndex((file) => file.martinTileSource === sanitizedName) !== -1) {
+      throw new ConflictException(
+        'A file with that name already exists',
+      );
+    }
 
     try {
       // Step 1: Extract global low-resolution base

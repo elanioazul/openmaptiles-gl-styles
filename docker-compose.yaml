@@ -32,11 +32,11 @@ services:
         - "3001:${MARTIN_PORT}"
       volumes:
         - ./martin-config.yaml:/etc/martin/martin-config.yaml
-        - ./assets:/mounted_data/assets
-        - ./styles:/mounted_data/styles
+        - ./mapping-gl/assets:/mounted_data/assets
+        - ./mapping-gl/styles:/mounted_data/styles
         - /c/gis_pruebas/planetiler/sp:/mounted_data/pmtiles/sp-planetiler:ro
         - /c/gis_pruebas/protomaps/sp:/mounted_data/pmtiles/sp-protomaps:ro
-        - ./clipped-pmtiles:/mounted_data/pmtiles/dynamic
+        - ./mapping-gl/clipped-pmtiles:/mounted_data/pmtiles/dynamic
       command: ["--config", "/etc/martin/martin-config.yaml", "--webui", "enable-for-all"]
       restart: unless-stopped
       networks:
@@ -48,7 +48,7 @@ services:
       - "3002:80"
     volumes:
       - ./nginx-assets.conf:/etc/nginx/nginx.conf:ro
-      - ./assets/pre-compiled-sprites/protomaps-v4:/data/sprites:ro
+      - ./mapping-gl/assets/pre-compiled-sprites/protomaps-v4:/data/sprites:ro
     restart: unless-stopped
     networks:
       - helios-gl-styling-network
@@ -72,7 +72,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - /c/gis_pruebas/planetiler/sp:/mounted_data/pmtiles/sp-planetiler:ro
       - /c/gis_pruebas/protomaps/sp:/mounted_data/pmtiles/sp-protomaps:ro
-      - ./clipped-pmtiles:/mounted_data/pmtiles/dynamic
+      - ./mapping-gl/clipped-pmtiles:/mounted_data/pmtiles/dynamic
     # Command for hot-reloading
     command: npm run start:dev
     env_file: .env
